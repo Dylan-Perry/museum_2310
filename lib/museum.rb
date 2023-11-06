@@ -26,4 +26,18 @@ class Museum
     def admit(patron)
         @patrons << patron
     end
+
+    def patrons_by_exhibit_interest
+        exhibit_interest_hash = {}
+        @exhibits.map do |exhibit|
+            exhibit_patrons_array = []
+            @patrons.map do |patron|
+                if recommend_exhibits(patron).include?(exhibit)
+                    exhibit_patrons_array << patron
+                end
+            end
+            exhibit_interest_hash[exhibit] = exhibit_patrons_array
+        end
+        exhibit_interest_hash
+    end
 end
