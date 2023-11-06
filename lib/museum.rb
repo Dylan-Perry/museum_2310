@@ -51,4 +51,12 @@ class Museum
         end
         contestants_array
     end
+
+    def draw_lottery_winner(exhibit)
+        if ticket_lottery_contestants(exhibit) != []
+            ticket_lottery_contestants(exhibit)[rand(0..(ticket_lottery_contestants(exhibit).count - 1))]
+        else
+            nil
+        end
+    end
 end
